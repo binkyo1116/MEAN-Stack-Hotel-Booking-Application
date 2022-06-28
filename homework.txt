@@ -1,0 +1,220 @@
+########## HOMEWORK 1 ############
+
+Rental Modules Homework !
+  1. Go to rental-list.component.html, you can see we are hardcoding 4 rental items.
+  2. In rental-list.component.ts create rentals array of 4 items, they can be just some strings
+     important thing is that we can iterate through them
+  3. in rental-list.component.html iterate through this array(find out how you can create for loop in angular) and inside of this loop render <bwm-rental-list-item></bwm-rental-list-item>
+  4. Good Luck! We will start with this next section and will add real data.
+
+
+########## HOMEWORK 2 ############
+
+Try to get :rentalId Parameter display on rental details page.
+1. Go to rental-detail.component.ts and try to get :rentalId parameter from url (you need to use ActivatedRoute)
+	and assign it to some variable , e.g "rentalId". Best place to get this parameter is in ngOnInit method.
+2. Display this parameter in rental-detail.component.html
+3. For additional info check routing on angular page.
+4. good luck
+
+
+
+########## ASSIGNMENT, User Model ############
+
+
+
+1.Create user model contains:
+	'username', of type String, min 4, max 32
+	'email', of type, String, min 4, max 32, should be required, lowercase, unique and should match this regex:
+		/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+
+	'password', of type String, and is required, min 4, max 32
+	'rentals', user can have multiple rentals (array of rental IDs) - you need probably check mongoose Documentation for it , !!!Feel free to skip this last one and follow me.
+
+
+
+  ########## ASSIGNMENT 2, Register and Login components ############
+
+1. Create auth component "/src/app/auth" as container component for Login and Register
+2. Create Register component inside auth component "/src/app/auth/register"
+3. Create Login component inside auth component "/src/app/auth/login"
+4. Create separate auth module with routing to login and register page
+5. Good luck ! (:
+
+
+
+########## ASSIGNMENT 3, Auth Service ############
+
+1. Create auth service in  "/src/app/auth/shared"
+2. Register service in auth module
+3. Create function "register" that sent POST request to our "/api/v1/users/register" with data from Form
+4. Good luck and have fun (:
+
+
+
+########## ASSIGNMENT 4, Reactive form validation ############
+1. add required validator to our login form to "email" and "password' in login.component.ts
+2. add [disabled] attribute to button in login form and disable it when form is NOT valid.
+3. Good luck guys!
+
+
+########## ASSIGNMENT 5, Login User ############
+
+1. Create function "login" that sent POST request to our "/api/v1/users/auth" with data from Form
+2. On form submit call this function inside of our login.component.ts
+3. Redirect user to "/rentals" on succesful login
+4. !!!!BONUS!!!! Save a token to local storage under a key "bwm_auth". Save a token in auth service
+5. Good luck and have fun (:
+
+########## ASSIGNMENT 6, Booking Model ############
+
+1. Create model called "Booking" with these properties:
+  - endAt: type Date, required: "Ending Date is Required"
+  - startAt: type Date, required: "Starting Date is Required"
+  - totalPrice: type Number
+  - days: type Number
+  - guests: type Number
+  - createdAt: type Date, default: Date Now
+  - user: type ObjectId
+  - rental: type ObjectId
+
+2. Update User Model
+  - bookings: type ObjectId and it is Array
+
+3. Update Rental Model
+  - bookings: type ObjectId and it is Array
+
+
+  ########## ASSIGNMENT 7, Booking Controller ############
+
+1. Controller function: "createBooking" with just some JSON response.
+2. Create POST route to "api/v1/bookings", apply Auth Middleware and createBooking controller
+3. Good Luck (:
+
+
+  ########## ASSIGNMENT 8, Booking Service ############
+
+1. Create Booking service in booking/shared folder
+2. Create function to send post request to endpoint api/v1/bookings with bookings data
+3. Create function in booking component that call our service function to create booking
+   after user click "confirm" button in modal.
+    !!!do not forget to assign to booking.rental = rental before sending requests!!!
+4. Check network tab if your request was succesful, if you are getting errors in response
+try to resolve them or continue video and follow me.
+    !!!do not forget to register service in providers of rental module!!!
+5. Good luck and have fun
+
+
+########## ASSIGNMENT 9, Add booked out dates to calendar after booking was created ############
+
+1. After success booking creation add new bookedout dates to bookedOutdates array
+   !!!Do not forget to get range of dates since you are getting startAt and endAt of booking !!!
+2. Push this new date range to booked out dates array
+3. Check calendar if change are applied
+4. Have fun, if you are stuck continue video and follow me.
+
+########## ASSIGNMENT 10, Create Endpoint to Create Rental ############
+
+1. Create POST route "api/v1/rentals" and apply auth middleware to it
+2. Get All values from request like "title, street, category, image...."
+3. !!!Do not forget to add user on rental since we are getting user from "res.locals.user" before you create Rental
+4. On succesful rental creation also update user -> push this new rental we just created to rentals of user
+   !!! If you dont remember check bookings controller where we pushing bookings to user!!!
+5. Have fun, if you are stuck continue video and follow me.
+
+
+########## ASSIGNMENT 11, Create rental-search ############
+
+1. Create "rental-search.component" inside of rental folder
+2. Inside of html template copy same code we have in "rental-list.component.html" file
+3. Create route ":city/homes" to component in "rental.module.ts" file
+4. Test to navigate to this route
+5. Have fun, if you are stuck continue video and follow me.
+
+########## ASSIGNMENT 12, Get rentals from server ############
+1. Create new function in rental service to get rentals with city query
+2. In rental-search component get city params from url.
+3. Call function from service and get rentals by city
+  - It is very similiar as rental-list component
+4. Have fun, if you are stuck continue video and follow me.
+
+
+########## ASSIGNMENT 13, Get data from form ############
+1. Provide [(ngModel)] to every input except image as we did in Register Form - dont forget "name" attribute.
+2. We can provide "required" attribute to inputs later since we want first test form.
+3. Get a reference to form with "ngForm"
+4. On button create click event and call function "createRental"
+5. console.log "newRental" in "createRental" function
+6. Have fun, if you are stuck continue video and follow me.
+
+
+########## ASSIGNMENT 14, Create manage section ############
+1. Create "manage" component in app folder with <router-outlet>
+2. Create "manage-rental" and "manage-booking" component in "manage" folder
+3. Create "manage" module with routing to "/manage/rentals" for ManageRentalComponent and "/manage/bookings" for ManageBookingComponent
+4. Remove unnecesary components that has been generated in app module
+5. Add links to header to these new components, just after create rental
+6. Do not forget register manage module to app module
+7. Have fun, if you are stuck continue video and follow me.
+
+
+
+########## ASSIGNMENT 15, Get user rentals and bookings from server ############
+1. Add function to rental service to get user rentals. GET Request to '/api/v1/rentals/manage'
+2. Add function to booking service to get user bookings. GET Request to '/api/v1/bookings/manage'
+3. Call these functions in "manage-booking" and "manage-rental" component in ngOnInit function
+4. Test if you are getting data, check network tab
+
+######## BONUS #########
+5. Iterate bookings and rentals in html templates and display some data.
+6. Have fun, if you are stuck continue video and follow me.
+
+
+
+
+########## ASSIGNMENT 16, Delete Rental Function ############
+1. Add function to rental service to delete rental by id, Send DELETE request to "/api/v1/rentals/rentalId"
+HINT: this.http.delete for delete request
+2. Create function in manage-rental-booking component and call rental service delete function inside when
+user click "Yes" button
+*BONUS*
+3. On success callback function remove rental from rentals array, remember we know index of rental we are removing and we are keeping this index in "rentalDeleteIndex"
+HINT: use "splice" function on array and do not forget set rentalDeleteIndex to undefined on success
+4. Have fun, if you are stuck continue video and follow me.
+
+
+########## ASSIGNMENT 17, Patch Rental Function ############
+1. Add function to rental service to PATCH rental by id, Send PATCH request to "/api/v1/rentals/rentalId"
+HINT: this.http.patch for patch request
+2. Do not forget to provide updated data we are emiting from editable component
+
+
+
+########## ASSIGNMENT 18, Create Image Upload Component ############
+1. Generate new component  "image-upload" in common/components
+2. Create Empty ImageUploadService in common/components/image-upload
+3. Create Image Upload Module in common/components/image-upload and exports image-upload component from it
+   NOTE: Dont forget also to import CommonModule and provide ImageUploadService
+4. Import this module in rental module
+5. Display image upload component in rental create form instead of image input we are displaying curently
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

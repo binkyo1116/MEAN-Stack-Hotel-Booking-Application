@@ -1,0 +1,95 @@
+@import 'variables';
+
+
+.daterangepicker {
+
+  td {
+    &.in-range {
+      background-color: #ffa9a9 !important;
+    }
+
+    &.active {
+      background-color: $main-color !important;
+
+      &:hover {
+        background-color: $main-color !important;
+      }
+    }
+  }
+}
+
+.booking {
+  padding: 20px;
+  border: 1px solid $light-gray-color;
+
+  .should-login {
+    text-align: center;
+    margin-bottom: 10px;
+
+    .btn-bwm {
+      padding: 15px;
+
+      &:focus, &:hover {
+        color: white;
+      }
+    }
+  }
+
+  .btn-confirm {
+    background-color: #FF5A5F;
+    font-size: 17px;
+    font-weight: 700;
+    padding: 13px;
+  }
+
+  label {
+    font-size:12px;
+    font-weight: 300;
+    margin-bottom: 0;
+  }
+
+  &-price {
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  &-per-night {
+    font-size: 13px;
+    font-weight: 300;
+  }
+
+  &-note-title {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  &-note-text {
+    font-size: 13px;
+    font-weight: 300;
+  }
+}
+
+// MODAL
+
+.title {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.buttons {
+  margin: 15px 0px;
+}
+
+em {
+  font-style: normal;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+p {
+  margin: 0;
+}
+
+.modal-error{
+  margin: 16px;
+}
